@@ -1,4 +1,5 @@
-﻿using ReadWriteJSONFiles.Modelo;
+﻿using ReadWriteJSONFiles.Controladores;
+using ReadWriteJSONFiles.Modelo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,14 +13,19 @@ namespace ReadWriteJSONFiles
         static void Main(string[] args)
         {
             List<Factura> listaFacturas = new List<Factura>();
-            List<Factura> listaClientes = new List<Factura>();
-            List<Factura> listaProductos = new List<Factura>();
+            List<Cliente> listaClientes = new List<Cliente>();
+            List<Producto> listaProductos = new List<Producto>();
+
+            listaClientes = ClienteController.JSONListadoDeClientes();
+          
 
             int opcion = 0;
             do
             {
                 do
                 {
+                    Console.Clear();
+
                     Console.WriteLine("Seleccione la Opcion");
                     Console.WriteLine("1.- Emitir Factura");
                     Console.WriteLine("2.- Agregar Cliente");
@@ -44,6 +50,30 @@ namespace ReadWriteJSONFiles
                         break;
                     case 2:
                         Console.WriteLine("Agregar Cliente");
+                        Cliente cliente = new Cliente();
+                        Console.WriteLine("Cédula: ");
+                        cliente.ID = Console.ReadLine();
+                        Console.WriteLine("Apellidos: ");
+                        cliente.Apellidos = Console.ReadLine();
+                        Console.WriteLine("Nombres: ");
+                        cliente.Nombres = Console.ReadLine();
+                        Console.WriteLine("Dirección: ");
+                        cliente.Direccion = Console.ReadLine();
+                        Console.WriteLine("Teléfono: ");
+                        cliente.Telefono = Console.ReadLine();
+
+                        Console.WriteLine("Los datos ingresados están correctos?? S/N");
+                        string respuesta = Console.ReadLine();
+                        if (respuesta == "S")
+                        {
+                            if (listaClientes == null)
+                            {
+                                listaClientes = new List<Cliente>();
+                            }
+                            listaClientes.Add(cliente);
+                            ClienteController.ListadoDeClientesJSON(listaClientes);
+                        }
+
                         Console.ReadKey();
                         break;
                     case 3:
@@ -70,7 +100,8 @@ namespace ReadWriteJSONFiles
         }
         static int ObtenerClientesDeArchivo()
         {
-
+            return 0;
         }
+
     }
 }
