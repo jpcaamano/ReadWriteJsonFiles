@@ -11,6 +11,14 @@ namespace ReadWriteJSONFiles.Controladores
 {
     public static class ProductoController
     {
+        public static Producto BuscarProductoPorID(List<Producto> listaProductos, string ID)
+        {
+            Producto productoQuery = (from producto in listaProductos
+                                    where producto.ID == ID
+                                    select producto).FirstOrDefault();
+
+            return productoQuery;
+        }
         public static List<Producto> JSONListadoDeProductos()
         {
             try
@@ -44,7 +52,7 @@ namespace ReadWriteJSONFiles.Controladores
         {
             try
             {
-                string cadena = File.ReadAllText(@"C:\Test\Productos.JSON");
+                string cadena = File.ReadAllText(@"C:\Test\Productos.json");
                 return cadena;
             }
             catch (Exception e)
@@ -58,8 +66,9 @@ namespace ReadWriteJSONFiles.Controladores
         {
             try
             {
-                StreamWriter file = new StreamWriter(@"C:\Test\Productos.JSON");
-                file.WriteAsync(cadena);
+                //StreamWriter file = new StreamWriter(@"C:\Test\Productos.JSON");
+                //file.WriteAsync(cadena);
+                File.WriteAllText(@"C:\Test\Productos.json", cadena);
                 return 1;
             }
             catch (Exception e)

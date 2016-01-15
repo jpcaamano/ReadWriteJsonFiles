@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace ReadWriteJSONFiles.Modelo
 {
-    class Detalle
+    public class Detalle
     {
         public int ID { get; set; }
         public Producto Producto;
-        public float Cantidad { get; set; }
-        public float Descuento { get; set; }
+        public double Cantidad { get; set; }
+        public double Descuento { get; set; }
 
     }
 }

@@ -44,7 +44,7 @@ namespace ReadWriteJSONFiles.Controladores
         {
             try
             {
-                string cadena = File.ReadAllText(@"C:\Test\Facturas.JSON");
+                string cadena = File.ReadAllText(@"C:\Test\Facturas.json");
                 return cadena;
             }
             catch (Exception e)
@@ -58,8 +58,9 @@ namespace ReadWriteJSONFiles.Controladores
         {
             try
             {
-                StreamWriter file = new StreamWriter(@"C:\Test\Facturas.JSON");
-                file.WriteAsync(cadena);
+                //StreamWriter file = new StreamWriter(@"C:\Test\Facturas.json");
+                //file.WriteAsync(cadena);
+                File.WriteAllText(@"C:\Test\Facturas.json", cadena);
                 return 1;
             }
             catch (Exception e)

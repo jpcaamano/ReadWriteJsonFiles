@@ -11,6 +11,14 @@ namespace ReadWriteJSONFiles.Controladores
 {
     public static class ClienteController
     {
+        public static Cliente BuscarClientePorID(List<Cliente> listaClientes, string ID)
+        {
+            Cliente clienteQuery =    ( from cliente in listaClientes
+                                        where cliente.ID == ID
+                                        select cliente).FirstOrDefault();
+
+            return clienteQuery;
+        }
         public static List<Cliente> JSONListadoDeClientes()
         {
             try

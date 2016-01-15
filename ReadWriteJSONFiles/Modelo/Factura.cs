@@ -11,8 +11,10 @@ namespace ReadWriteJSONFiles.Modelo
         public int ID { get; set; }
         public DateTime Fecha { get; set; }
         public Cliente Cliente;
-        List<Detalle> ListaDetalles;
+        public List<Detalle> ListaDetalles;
 
-             
+
+
+
     }
 }
